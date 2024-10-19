@@ -1,88 +1,176 @@
+/* 
+ * Yes, this codebase is near unreadable. Why?
+ * I designed this mainly as a test to see how viable avoidance of straight out class selectors would be.
+ * The codebase was never designed to be pretty, it was designed to require as little maintenance as possible.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap');
+@import url('https://mwittrien.github.io/BetterDiscordAddons/Themes/BlurpleRecolor/BlurpleRecolor.css');
+@import url('https://discord-custom-covers.github.io/usrbg/dist/usrbg.css');
+
+button {
+	--accentcolor: var(--accent-alt);
+}
+
 /* Root Variables */
 :root {
-    --font-primary: 'Karla', sans-serif;
-    --font-display: var(--font-primary) !important;
+	--font-primary: 'Karla', sans-serif;
+	--font-display: var(--font-primary) !important;
 
-    /* Updated Background Image */
-    --background-image: url('https://i.imgur.com/nQbHbjT.gif');
-    --home-image: url('https://i.imgur.com/93LkJEu.gif');
+	/* Dark Matter Variables */
+	--avatar-size: 32px;
 
-    /* Background Colors */
-    --background-solid: #161921;
-    --background-solid-dark: #101218;
-    --background-solid-darker: #0c0e12;
-    --accent: 37, 172, 232;
-    --accent-alt: 29, 101, 134;
-    --md-black: 0, 0, 0;
-    --dm-white: 255, 255, 255;
-    --accentcolor: var(--accent);
+	/* Updated Background and Gif */
+	--background-image: url('https://i.imgur.com/i75J29L.png');
+	--home-image: url('https://i.imgur.com/nQbHbjT.gif');
+
+	--background-solid: #161921;
+	--background-solid-dark: #101218;
+	--background-solid-darker: #0c0e12;
+	--accent: 37, 172, 232;
+	--accent-alt: 29, 101, 134;
+	--md-black: 0, 0, 0;
+	--dm-white: 255, 255, 255;
+
+	/* BlurpleRecolor */
+	--accentcolor: var(--accent);
+	--vaccentcolor-hover: rgb(var(--accent));
+	--vaccentcolor-active: rgb(var(--accent));
 }
 
-/* Body Background Fix */
+/* Ensure proper background image display */
 body {
-    background: var(--background-image) center/cover no-repeat fixed !important;
-    background-size: cover !important;
-    background-position: center !important;
+	background: var(--background-image) center/cover no-repeat fixed !important;
 }
 
-/* Ensuring app mount and sidebars get the background */
 #app-mount {
-    background: var(--background-image) center/cover no-repeat fixed !important;
-    background-color: transparent !important;
+	background-color: transparent !important;
+	background-image: var(--background-image) !important;
+	background-size: cover !important;
+	background-position: center !important;
 }
 
+/* Sidebar and Guilds */
 .platform-win [class^="sidebar-"] {
-    background-color: #ffffff !important; /* Changed to white */
+	border-radius: 0;
+	background-color: transparent;
 }
 
-/* Scrollbars - making them smaller and less visible */
-::-webkit-scrollbar {
-    width: 2px !important;  /* Reduced scrollbar width */
-    background-color: transparent !important;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.1) !important; /* Almost invisible thumb */
-    border-radius: 10px !important;
-}
-
-/* Sidebar Left (Server List) Background */
 nav[class*="guilds-"] {
-    background-color: #ffffff !important; /* Changed to white */
+	background-color: transparent;
 }
 
 ul[data-list-id='guildsnav'] {
-    --background-secondary: var(--background-solid);
-    --background-primary: rgba(var(--dm-white), 0.1);
-    margin-bottom: 70px;
-    background-color: rgba(var(--md-black), 0.6);
-    border-right: 1px solid rgba(var(--md-black), 0.2);
-    box-shadow: inset -10px 0px 20px -10px rgba(var(--md-black), 0.3);
+	--background-secondary: var(--background-solid);
+	--background-primary: rgba(var(--dm-white), 0.1);
+	margin-bottom: 70px;
+	background-color: rgba(var(--md-black), 0.6);
+	border-right: 1px solid rgba(var(--md-black), 0.2);
+	box-shadow: inset -10px 0px 20px -10px rgba(var(--md-black), 0.3);
 }
 
 ul[data-list-id='guildsnav'] ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
-/* Sidebar (DM List Background to White) */
-.platform-win [class^="sidebar-"] {
-    border-radius: 0;
-    background-color: #ffffff !important; /* Changed to white */
+/* Scrollbars */
+::-webkit-scrollbar {
+	width: 14px !important;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 8px !important;
+	border: 3px solid transparent !important;
+	background-color: rgba(var(--accent-alt), 1) !important;
+}
+
+::-webkit-scrollbar-track {
+	visibility: visible !important;
+	border-radius: 8px !important;
+	border: 3px solid transparent !important;
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	background-clip: padding-box !important;
+}
+
+/* Titlebar */
+div[class*="typeWindows-"] {
+	--background-modifier-hover: rgba(var(--dm-white), 0.05);
+	--background-modifier-active: rgba(var(--dm-white), 0.075);
+	height: 26px;
+}
+
+div[class*="typeWindows-"]>div:first-child {
+	display: none;
+}
+
+div[class*="typeWindows-"]>div[role="button"] {
+	height: 30px;
+	width: 36px;
+}
+
+div[class*="typeWindows-"]::after {
+	content: 'Discord';
+	font-weight: 5000;
+	line-height: 31px;
+	color: var(--text-muted);
+	font-size: 14px;
+	position: absolute;
+	padding: 0 12px;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	background: rgba(var(--md-black), 0.85);
+	z-index: -1;
+}
+
+/* Sidebar Header */
+nav[aria-label]>div>header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 54px;
+	--background-accent: rgba(var(--accent), 1);
+	--background-modifier-hover: rgba(var(--md-black), 0.25);
 }
 
 /* Content Area Background */
 div[class^="container-"][id^="chat-messages-"] {
-    background: var(--background-image) center/cover no-repeat fixed !important;
+	--background-modifier-hover: var(--background-solid-dark);
+	background: transparent;
 }
 
-/* Fix for Modals */
-div[class*="footerSeparator"] {
-    box-shadow: none !important;
-    background-color: transparent !important;
+/* Panels */
+div[class^='sidebar-']>section {
+	--background-primary: rgba(var(--dm-white), 0.07);
+	--background-secondary: rgba(var(--dm-white), 0.1);
+	--background-secondary-alt: rgba(var(--md-black), 0.95);
+	margin-bottom: 70px;
 }
 
-div[class^="splashBackground"] canvas,
-div[class^="splashBackground"] img {
-    display: none;
+div[class^='sidebar-']>section>div:last-child {
+	background-color: var(--background-secondary-alt);
+	box-sizing: border-box;
+	height: 70px;
+	padding: 0 18px;
+	width: calc(100% + 72px);
+	position: absolute;
+	left: -72px;
+	bottom: 0;
 }
 
+div[class^="sidebar-"]>section>div:last-child [class^="avatarWrapper-"] {
+	flex: 1;
+}
+
+/* Footer */
+#app-mount .footer-2gL1pp, #app-mount .footer-3mqk7D {
+	background-color: var(--background-secondary);
+	box-shadow: none;
+}
+
+/* Tooltips */
+div[class^="tooltip-"] {
+	--background-floating: rgba(var(--accent-alt), 1);
+	--text-normal: #e0e0e0;
+}
