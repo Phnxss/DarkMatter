@@ -2,11 +2,11 @@
 :root {
     --font-primary: 'Karla', sans-serif;
     --font-display: var(--font-primary) !important;
-    
+
     /* Updated Background Image */
     --background-image: url('https://i.imgur.com/nQbHbjT.gif');
     --home-image: url('https://i.imgur.com/93LkJEu.gif');
-    
+
     /* Background Colors */
     --background-solid: #161921;
     --background-solid-dark: #101218;
@@ -16,6 +16,23 @@
     --md-black: 0, 0, 0;
     --dm-white: 255, 255, 255;
     --accentcolor: var(--accent);
+}
+
+/* Body Background Fix */
+body {
+    background: var(--background-image) center/cover no-repeat fixed !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* Ensuring app mount and sidebars get the background */
+#app-mount {
+    background: var(--background-image) center/cover no-repeat fixed !important;
+    background-color: transparent !important;
+}
+
+.platform-win [class^="sidebar-"] {
+    background-color: #ffffff !important; /* Changed to white */
 }
 
 /* Scrollbars - making them smaller and less visible */
@@ -53,16 +70,19 @@ ul[data-list-id='guildsnav'] ::-webkit-scrollbar {
     background-color: #ffffff !important; /* Changed to white */
 }
 
-/* Body Background Fix */
-body {
-    background: var(--background-image) center/cover no-repeat !important; /* Ensuring the image is applied correctly */
+/* Content Area Background */
+div[class^="container-"][id^="chat-messages-"] {
+    background: var(--background-image) center/cover no-repeat fixed !important;
 }
 
-#app-mount {
+/* Fix for Modals */
+div[class*="footerSeparator"] {
+    box-shadow: none !important;
     background-color: transparent !important;
 }
 
-/* Ensure consistency across all panels and containers */
-div[class*="baseLayer-"]>div[class^="container-"] {
-    background-color: rgba(var(--md-black), 0.4) !important;
+div[class^="splashBackground"] canvas,
+div[class^="splashBackground"] img {
+    display: none;
 }
+
