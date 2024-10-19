@@ -13,22 +13,22 @@ button {
 
 	/* Dark Matter Variables */
 	--avatar-size: 32px;
-	--background-image: url('https://i.imgur.com/i75J29L.png'); /* Set to your new background image */
-	--home-image: url('https://i.imgur.com/nQbHbjT.gif'); /* Set to your new home GIF */
+	--background-image: url('https://i.imgur.com/i75J29L.png'); /* Set to your background image */
+	--home-image: url('https://i.imgur.com/nQbHbjT.gif'); /* Set to your home GIF */
 	--background-solid: #161921;
 	--background-solid-dark: #101218;
 	--background-solid-darker: #0c0e12;
 	--accent: 37, 172, 232;
 	--accent-alt: 29, 101, 134;
 	--md-black: 0, 0, 0;
-	--dm-white: 0, 0, 0; /* Text set to black */
+	--dm-white: 255, 255, 255;
 	/* BlurpleRecolor */
 	--accentcolor: var(--accent);
 	--vaccentcolor-hover: rgb(var(--accent));
 	--vaccentcolor-active: rgb(var(--accent));
 }
 
-/* Ensure background image applies to all areas */
+/* Apply Background Image across all screens */
 body, #app-mount, div[class^="app-"], div[class*="container-"], div[class*="contentRegion-"], div[class*="contentRegionScroller-"], div[class^="sidebar-"], .container-2cd8Mz {
 	background-image: var(--background-image) !important;
 	background-color: transparent !important;
@@ -38,7 +38,7 @@ body, #app-mount, div[class^="app-"], div[class*="container-"], div[class*="cont
 	background-attachment: fixed !important;
 }
 
-/* Apply Home GIF specifically for the Home screen */
+/* Home Screen (Guild Navigation) GIF */
 div[data-list-item-id="guildsnav___home"] {
 	background-image: var(--home-image) !important;
 	background-position: center !important;
@@ -46,10 +46,11 @@ div[data-list-item-id="guildsnav___home"] {
 	background-repeat: no-repeat !important;
 }
 
-/* Set text color to black */
+/* Rest of the original CSS */
 :not(div[class*="userProfile"][class*="unThemed"]).theme-dark,
 :not(div[class*="userProfile"]).theme-light,
 div[class*="userProfile"][class*="unThemed"].theme-light {
+	/* Discord vars */
 	--background-primary: var(--background-solid);
 	--background-mobile-primary: var(--background-primary);
 	--background-secondary: var(--background-solid);
@@ -69,17 +70,17 @@ div[class*="userProfile"][class*="unThemed"].theme-light {
 	--elevation-low: inset 0 -1px 0 0 rgba(var(--md-black), 0.3);
 	--channels-default: rgba(var(--dm-white), 0.3);
 	--deprecated-quickswitcher-input-background: var(--background-solid);
-	--header-primary: rgba(0, 0, 0, 1); /* Set header text color to black */
-	--header-secondary: rgba(0, 0, 0, 0.6); /* Secondary header in black */
-	--text-normal: rgba(0, 0, 0, 1); /* Normal text set to black */
-	--text-muted: #000000; /* Muted text set to black */
-	--interactive-muted: rgba(0, 0, 0, 0.15);
-	--interactive-normal: rgba(0, 0, 0, 0.5);
-	--interactive-hover: rgba(0, 0, 0, 0.75);
-	--interactive-active: rgba(0, 0, 0, 1);
-	--deprecated-card-bg: rgba(0, 0, 0, 0.05); /* Background for old cards */
-	--text-link: rgba(0, 0, 0, 1); /* Links set to black */
-	--focus-primary: rgba(0, 0, 0, 1); /* Focus color set to black */
+	--header-primary: rgba(var(--dm-white), 1);
+	--header-secondary: rgba(var(--dm-white), 0.6);
+	--text-normal: rgba(var(--dm-white), 0.6);
+	--text-muted: #8a8e94;
+	--interactive-muted: rgba(var(--dm-white), 0.15);
+	--interactive-normal: rgba(var(--dm-white), 0.5);
+	--interactive-hover: rgba(var(--dm-white), 0.75);
+	--interactive-active: rgba(var(--dm-white), 1);
+	--deprecated-card-bg: rgba(var(--dm-white), 0.05);
+	--text-link: rgba(var(--accent), 1);
+	--focus-primary: rgba(var(--accent), 1);
     --modal-background: var(--background-solid);
     --modal-footer-background: var(--background-solid-darker);
 }
@@ -103,12 +104,7 @@ div[class*="userProfile"][class*="unThemed"].theme-light {
 	background-clip: padding-box !important;
 }
 
-/* Apply background image correctly and ensure it stays on all screens */
-body {
-	background: var(--background-image) center center / cover no-repeat !important;
-	background-attachment: fixed !important;
-}
-
+/* Transparent UI Elements */
 #app-mount {
     background-color: transparent;
 	--background-tertiary: transparent;
