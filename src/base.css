@@ -38,12 +38,31 @@ button {
 	--vaccentcolor-active: rgb(var(--accent));
 }
 
-/* Ensure proper background image display */
-body, #app-mount, div[class^="app-"], div[class*="container-"] {
+/* Apply background image to ALL containers and elements */
+body, #app-mount, div[class^="app-"], div[class*="container-"], div[class*="contentRegion-"], div[class*="contentRegionScroller-"], div[class^="sidebar-"], .container-2cd8Mz {
 	background: var(--background-image) center/cover no-repeat fixed !important;
 	background-color: transparent !important;
 	background-size: cover !important;
 	background-position: center !important;
+}
+
+#app-mount, .contentRegion-2rrFYd, .base-3dtUhz, .layer-3QrUeG, .container-2o3qEW {
+	background-image: var(--background-image) !important;
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+	background-attachment: fixed !important;
+	background-size: cover !important;
+}
+
+/* Ensure background for all modals and overlays */
+div[class*="modal-"] {
+	background: transparent !important;
+}
+
+div[class^='appDevToolsWrapper-'], div[class^="container-"] {
+	--background-primary: transparent;
+	--background-secondary: transparent;
+	--background-tertiary: transparent;
 }
 
 /* Sidebar and Guilds */
