@@ -39,13 +39,9 @@ button {
 }
 
 /* Ensure proper background image display */
-body {
+body, #app-mount, div[class^="app-"], div[class*="container-"] {
 	background: var(--background-image) center/cover no-repeat fixed !important;
-}
-
-#app-mount {
 	background-color: transparent !important;
-	background-image: var(--background-image) !important;
 	background-size: cover !important;
 	background-position: center !important;
 }
